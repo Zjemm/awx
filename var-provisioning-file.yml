@@ -1,0 +1,4 @@
+# Add F5 modules here
+module_provisioning:
+ - name: 'asm'
+   level: 'nominal'

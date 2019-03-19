@@ -1,0 +1,29 @@
+# DESCRIPTION
+# playbook that will onboard F5 BigIP
+#
+# REQUIREMENTS
+#
+# STEPS
+# update the appropriate var files with your own settings
+#
+# ansible-playbook -v onboarding.yml
+#
+#
+
+
+---
+
+###################################################################################
+
+- hosts: localhost
+  gather_facts: no
+  connection: local
+
+  #Variable file included
+  vars_files:
+    - var-license-file.yml
+    - var-onboard-file.yml
+
+  roles:
+    - license
+    - onboarding

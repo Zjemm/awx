@@ -1,0 +1,8 @@
+## group vars ##
+
+provider:
+   server: 10.1.0.154
+   user: admin
+   password: admindefault
+   validate_certs: no
+   server_port: 443

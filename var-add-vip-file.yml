@@ -1,0 +1,31 @@
+# Add VIPS here
+
+vip_state: 'present'
+vip_partition: 'Common'
+vip_type: 'standard'
+
+vip_name: 'application-1-443-vip'
+vip_description: 'application-1-443-vip'
+vip_destination: '10.1.10.130'
+
+vip_pool: 'appliacation-1-pool'
+vip_port: '80'
+vip_snat: 'Automap'
+vip_default_persistence_profile: 'cookie'
+vip_fallback_persistence_profile: 'source_addr'
+
+vip_profiles:
+  - 'http'
+  - name: 'tcp-wan-optimized'
+    context: 'client-side'
+  - name: 'tcp-lan-optimized'
+    context: 'server-side'
+
+vip_policies:
+
+
+vip_irules:
+
+
+vip_enabled_vlans:
+  - '/Common/External'

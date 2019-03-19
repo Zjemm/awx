@@ -1,0 +1,27 @@
+# DESCRIPTION
+# playbook that will add a POOL to F5 BigIP
+#
+# REQUIREMENTS
+#
+# STEPS
+# update the appropriate var files with your own settings
+#
+# ansible-playbook -v add-pool.yml
+#
+#
+
+
+---
+
+###################################################################################
+
+- hosts: localhost
+  gather_facts: no
+  connection: local
+
+  #Variable file included
+  vars_files:
+    - var-add-pool-file.yml
+
+  roles:
+    - add-pool

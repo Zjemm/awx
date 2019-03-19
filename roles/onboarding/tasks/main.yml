@@ -1,0 +1,68 @@
+---
+
+  #Onboard the BIG-IP (NTP/Hostname/SSHD/DNS)
+  - name: Configure NTP server on BIG-IP
+    bigip_device_ntp:
+      provider: "{{ provider }}"
+      ntp_servers: "{{ onboard_ntp_servers }}"
+    delegate_to: localhost
+
+  - name: Configure BIG-IP hostname
+    bigip_hostname:
+      provider: "{{ provider }}"
+      hostname: "{{ onboard_hostname }}"
+    delegate_to: localhost
+
+  - name: Manage SSHD setting on BIG-IP
+    bigip_device_sshd:
+      provider: "{{ provider }}"
+      banner: "enabled"
+      banner_text: " {{ onboard_banner_text }}"
+    delegate_to: localhost
+
+  - name: Manage BIG-IP DNS settings
+    bigip_device_dns:
+      provider: "{{ provider }}"
+      validate_certs: False
+      name_servers: "{{ onboard_dns_servers }}"
+    delegate_to: localhost
+
+  #Network the BIG-IP (VLANS/Self-IP configuration)
+  - name: Configure VLANs on the BIG-IP
+    bigip_vlan:
+      provider: "{{ provider }}"
+      name: "{{ item.name }}"
+      tag: "{{ item.tag }}"
+      untagged_interface: "{{ item.interface }}"
+    with_items: "{{ onboard_vlan_information }}"
+    delegate_to: localhost
+
+  - name: Configure SELF-IPs on the BIG-IP
+    bigip_selfip:
+      provider: "{{ provider }}"
+      name: "{{ item.name }}"
+      address: "{{ item.address }}"
+      netmask: "{{ item.netmask }}"
+      vlan: "{{ item.vlan }}"
+      allow_service: "{{item.allow_service}}"
+    with_items: "{{ onboard_selfip_information }}"
+    delegate_to: localhost
+
+  - name: Create Default static route with gateway address
+    bigip_static_route:
+      provider: "{{ provider }}"
+      name: "{{ item.name }}"
+      destination: "{{ item.destination }}"
+      netmask: "{{ item.netmask }}"
+      gateway_address: "{{ item.gateway_address }}"
+    with_items: "{{ onboard_default_route_information }}"
+    delegate_to: localhost
+
+  #Modules to provision
+  - name: Provision BIG-IP with appropriate modules
+    bigip_provision:
+      provider: "{{ provider }}"
+      module: "{{ item.name }}"
+      level: "{{ item.level }}"
+    with_items: "{{ onboard_module_provisioning }}"
+    delegate_to: localhost

@@ -1,0 +1,41 @@
+onboard_banner_text: "--------Welcome to BIGIP----------"
+
+onboard_hostname: 'bigip.lab'
+
+onboard_ntp_servers:
+ - '0.nl.pool.ntp.org'
+ - '2.nl.pool.ntp.org'
+
+onboard_dns_servers:
+ - '1.1.1.1'
+ - '4.4.4.4'
+
+onboard_vlan_information:
+ - name: 'External'
+   tag: '10'
+   interface: '1.1'
+ - name: 'Internal'
+   tag: '11'
+   interface: '1.2'
+
+onboard_selfip_information:
+ - name: 'External-SelfIP'
+   address: '10.1.10.70'
+   netmask: '255.255.255.0'
+   vlan: 'External'
+   allow_service: 'default'
+ - name: 'Internal-SelfIP'
+   address: '10.1.20.70'
+   netmask: '255.255.255.0'
+   vlan: 'Internal'
+   allow_service: 'default'
+
+onboard_default_route_information:
+ - name: 'external_default_gateway'
+   destination: '0.0.0.0'
+   netmask: '0.0.0.0'
+   gateway_address: '10.1.10.254'
+
+onboard_module_provisioning:
+ - name: 'ltm'
+   level: 'nominal'

@@ -1,0 +1,9 @@
+---
+
+  # License the BIG-IP
+  - name: License a BIG-IP
+    bigip_device_license:
+      provider: "{{ provider }}"
+      license_key: "{{ license }}"
+      accept_eula: yes
+    delegate_to: localhost

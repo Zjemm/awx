@@ -1,0 +1,27 @@
+# DESCRIPTION
+# playbook that will add a VIP to F5 BigIP
+#
+# REQUIREMENTS
+#
+# STEPS
+# update the appropriate var files with your own settings
+#
+# ansible-playbook -v add-vip.yml
+#
+#
+
+
+---
+
+###################################################################################
+
+- hosts: localhost
+  gather_facts: no
+  connection: local
+
+  #Variable file included
+  vars_files:
+    - var-add-vip-file.yml
+
+  roles:
+    - add-vip

@@ -1,0 +1,22 @@
+---
+
+  # Add the VIP on F5 BIG-IP
+  - name: Create a VIP
+    bigip_virtual_server:
+      provider: "{{ provider }}"
+      state: "{{ vip_state }}"
+      partition: "{{ vip_partition }}"
+      type: "{{ vip_type }}"
+      name: "{{ vip_name }}"
+      description: "{{ vip_description }}"
+      destination: "{{ vip_destination }}"
+      port: "{{ vip_port }}"
+      pool: "{{ vip_pool }}"
+      snat: "{{ vip_snat }}"
+      default_persistence_profile: "{{ vip_default_persistence_profile }}"
+      fallback_persistence_profile: "{{ vip_fallback_persistence_profile }}"
+      profiles: "{{ vip_profiles }}"
+      policies: "{{ vip_policies }}"
+      irules: "{{ vip_irules }}"
+      enabled_vlans: "{{ vip_enabled_vlans }}"
+    delegate_to: localhost

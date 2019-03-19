@@ -1,0 +1,26 @@
+---
+
+  # Add the POOL on F5 BIG-IP
+  - name: Create a POOL
+    bigip_pool:
+      provider: "{{ provider }}"
+      state: "{{ pool_state }}"
+      partition: "{{ pool_partition }}"
+      name: "{{ pool_name }}"
+      description: "{{ pool_description }}"
+      lb_method: "{{ pool_lb_method }}"
+      monitor_type: "{{ pool_monitor_type }}"
+      monitors: "{{ pool_monitors }}"
+    delegate_to: localhost
+
+  # Add the nodes on F5 BIG-IP and to a pool
+  - name: Add Nodes to a POOL
+    bigip_pool_member:
+      provider: "{{ provider }}"
+      partition: "{{ pool_partition }}"
+      pool: "{{ pool_name }}"
+      name: "{{ item.name }}"
+      host: "{{ item.host }}"
+      port: "{{ item.port }}"
+    with_items: "{{ pool_information }}"
+    delegate_to: localhost
