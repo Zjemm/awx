@@ -1,0 +1,20 @@
+# Add nodes to a pool
+node_information:
+ - name: 'application-1-node-1' 
+   host: '10.1.20.110'
+   partition: 'Common'
+   monitors:
+      - '/Common/icmp'
+   
+
+ - name: 'application-1-node-2'
+   host: '10.1.20.111'
+   partition: 'Common'
+   monitors:
+      - '/Common/icmp'
+
+ - name: 'application-2-node-1'
+   host: '10.1.20.112'
+   partition: 'Common'
+   monitors:
+      - '/Common/icmp'

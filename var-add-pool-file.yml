@@ -1,23 +1,20 @@
 # Add POOLS here
 
-pool_state: 'present'
-pool_partition: 'Common'
-
-pool_name: 'application-1-443-pool'
-pool_description: 'application-1-443-pool'
-
-pool_lb_method: 'least-connections-member'
-pool_monitor_type: 'single'
-pool_monitors:
-  - 'tcp'
-
-
-# Add members to pool
 pool_information:
- - name: 'application-1-node-1' 
-   host: '10.1.20.110'
-   port: '80'
- - name: 'application-1-node-2'
-   host: '10.1.20.111'
-   port: '80'
+ - pool_state: 'present'
+   pool_partition: 'Common'
+   pool_name: 'application-1-443-pool'
+   pool_description: 'application-1-443-pool'
+   pool_lb_method: 'least-connections-member'
+   pool_monitor_type: 'single'
+   pool_monitors:
+     - 'tcp'
+ - pool_state: 'present'
+   pool_partition: 'Common'
+   pool_name: 'application-2-443-pool'
+   pool_description: 'application-2-443-pool'
+   pool_lb_method: 'least-connections-member'
+   pool_monitor_type: 'single'
+   pool_monitors:
+     - 'tcp'
 

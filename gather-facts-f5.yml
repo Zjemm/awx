@@ -1,0 +1,28 @@
+# DESCRIPTION
+# playbook that will add nodes to F5 BigIP
+#
+# REQUIREMENTS
+#
+# STEPS
+# update the appropriate var files with your own settings
+#
+# ansible-playbook -v add-node.yml
+#
+#
+
+
+---
+
+###################################################################################
+
+- hosts: localhost
+  gather_facts: no
+  connection: local
+
+tasks:
+- name: Collect BIG-IP facts
+  bigip_device_facts:
+    gather_subset:
+      - ltm_pools
+    provider: "{{ provider }}"
+  delegate_to: localhost

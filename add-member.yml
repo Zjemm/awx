@@ -1,0 +1,27 @@
+# DESCRIPTION
+# playbook that will add members to F5 BigIP
+#
+# REQUIREMENTS
+#
+# STEPS
+# update the appropriate var files with your own settings
+#
+# ansible-playbook -v add-member.yml
+#
+#
+
+
+---
+
+###################################################################################
+
+- hosts: localhost
+  gather_facts: no
+  connection: local
+
+  #Variable file included
+  vars_files:
+    - var-add-member-file.yml
+
+  roles:
+    - add-member

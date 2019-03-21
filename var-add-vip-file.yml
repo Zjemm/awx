@@ -4,6 +4,7 @@ vip_state: 'present'
 vip_partition: 'Common'
 vip_type: 'standard'
 
+vip_name: 'application-1-443-vip'
 vip_description: 'application-1-443-vip'
 vip_destination: '10.1.10.130'
 

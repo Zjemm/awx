@@ -1,0 +1,23 @@
+# Add Members here
+
+member_information:
+ - member_state: 'present'
+   member_partition: 'Common'
+   member_pool: 'application-1-443-pool'
+   member_description: 'application-1-443-member'
+   member_name: 'application-1-node-1'
+   member_port: '80'
+
+ - member_state: 'present'
+   member_partition: 'Common'
+   member_pool: 'application-1-443-pool'
+   member_description: 'application-1-443-member'
+   member_name: 'application-1-node-2'
+   member_port: '80'
+
+ - member_state: 'present'
+   member_partition: 'Common'
+   member_pool: 'application-2-443-pool'
+   member_description: 'application-2-443-member'
+   member_name: 'application-2-node-1'
+   member_port: '80'

@@ -1,0 +1,13 @@
+---
+
+  # Add nodes on F5 BigIP
+  - name: Add Nodes to F5 BigIP
+    bigip_node:
+      provider: "{{ provider }}"
+      partition: "{{ item.partition }}"
+      name: "{{ item.name }}"
+      host: "{{ item.host }}"
+      monitors: "{{ item.monitors }}"
+    with_items: "{{ node_information }}"
+    delegate_to: localhost
+

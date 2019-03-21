@@ -1,0 +1,14 @@
+---
+
+  # Add the members to a pool on F5 BIG-IP
+  - name: Add members to a POOL
+    bigip_pool_member:
+      provider: "{{ provider }}"
+      state: "{{ item.member_state }}"
+      partition: "{{ item.member_partition }}"
+      pool: "{{ item.member_pool }}"
+      name: "{{ item.member_name }}"
+      port: "{{ item.member_port }}"
+      description: "{{ item.member_description }}"
+    with_items: "{{ member_information }}"
+    delegate_to: localhost
